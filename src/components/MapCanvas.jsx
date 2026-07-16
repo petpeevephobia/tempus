@@ -613,7 +613,7 @@ export default function MapCanvas({
         </div>
       </div>
 
-      {/* NEW BOTTOM-LEFT: RESET TO HESSEN MAP VIEW BUTTON */}
+      {/* BOTTOM-LEFT: RESET TO HESSEN MAP VIEW BUTTON */}
       <div className="absolute bottom-32 left-4 z-[999]">
         <button
           onClick={() => setResetViewport(true)}
@@ -704,38 +704,37 @@ export default function MapCanvas({
                     {name}
                   </h3>
 
-                  <p className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wider mb-1">
+                  <p className="text-[10px] text-slate-900 font-semibold uppercase tracking-wider mb-1">
                     Style: {style}
                   </p>
 
                   <p className="text-xs mb-3 text-slate-700 leading-relaxed">
                     {description}
-                  </p>
-
-                  {activeUrl && (
-                    <a
-                      href={activeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-1.5 w-full bg-slate-900 hover:bg-emerald-600 text-white hover:text-slate-950 font-bold text-[10px] tracking-wide uppercase py-1.5 px-3 rounded-lg mb-2.5 transition-all duration-200"
-                    >
-                      {t.learnMore}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={2.5}
-                        stroke="currentColor"
-                        className="w-3 h-3"
+                    {activeUrl && (
+                      <a
+                        href={activeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-0.5 text-emerald-600 hover:text-emerald-500 font-bold text-[10px] tracking-wide uppercase underline transition-colors"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                        />
-                      </svg>
-                    </a>
-                  )}
+                        {t.learnMore}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2.5}
+                          stroke="currentColor"
+                          className="w-3 h-3 inline"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                          />
+                        </svg>
+                      </a>
+                    )}
+                  </p>
 
                   <div className="flex justify-between text-[9px] text-slate-400 pt-1 border-t border-slate-100 font-mono">
                     <span>

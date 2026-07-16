@@ -10,11 +10,11 @@
 
 /* Animated Dash Effect for Geodesic Survey Lines */
 @keyframes dash {
-    to {
-      stroke-dashoffset: -20;
-    }
+  to {
+    stroke-dashoffset: -20;
   }
-  
-  .animate-dash {
-    animation: dash 1s linear infinite;
-  }
+}
+
+.animate-dash {
+  animation: dash 1s linear infinite;
+}

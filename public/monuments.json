@@ -60,6 +60,21 @@
         "description": "The ancient stone fortifications built to protect the core boundaries of Alt-Frankfurt.",
         "url": "https://de.wikipedia.org/wiki/Staufenmauer"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.67122, 50.43395]
+      },
+      "properties": {
+        "name": "Kastell Butzbach",
+        "start": 90,
+        "end": 260,
+        "style": "Roman cohort fort",
+        "description": "Roman fort in the Butzbach district on the Wetterau Limes. Sources note that there were two forts in the area, including the border fort popularly known as Hunneburg.",
+        "url": "https://de.wikipedia.org/wiki/Kastell_Butzbach"
+      }
     }
   ]
 }
