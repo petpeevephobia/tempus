@@ -1,0 +1,8 @@
+# Python Virtual Environment
+env/
+.venv/
+__pycache__/
+
+# Node Packaged Modules
+node_modules/
+.next/

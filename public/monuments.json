@@ -1,0 +1,90 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6821,
+          50.1109
+        ]
+      },
+      "properties": {
+        "name": "Kaiserpfalz Franconofurd",
+        "start": 843,
+        "end": 1250,
+        "style": "Carolingian",
+        "description": "The historic origin of Frankfurt. Built as a royal palace, serving as a seat of power for Charlemagne's successors."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6825,
+          50.1105
+        ]
+      },
+      "properties": {
+        "name": "Frankfurter Dom (St. Bartholomew's)",
+        "start": 1250,
+        "end": 9999,
+        "style": "Gothic",
+        "description": "The dominant Gothic collegiate church of Frankfurt, serving as the official election and coronation site of Holy Roman Emperors."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5644,
+          50.2721
+        ]
+      },
+      "properties": {
+        "name": "Saalburg Roman Fort",
+        "start": 90,
+        "end": 260,
+        "style": "Roman",
+        "description": "A cohort fort on the Limes Germanicus, serving as a key military outpost along the outer border of the Roman Empire."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4414,
+          50.1831
+        ]
+      },
+      "properties": {
+        "name": "Burg Kronberg",
+        "start": 1220,
+        "end": 9999,
+        "style": "High Medieval",
+        "description": "An imposing hilltop fortress nestled in the Taunus mountains, built by the noble Knights of Kronberg."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6808,
+          50.1098
+        ]
+      },
+      "properties": {
+        "name": "Staufenmauer (City Wall)",
+        "start": 1180,
+        "end": 1806,
+        "style": "Romanesque Defensive",
+        "description": "The first stone boundary wall erected around Frankfurt to defend the free imperial city during the Staufen dynasty."
+      }
+    }
+  ]
+}
