@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Polyline, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Polyline, useMapEvents, useMap } from "react-leaflet";
 import * as turf from "@turf/turf";
 import proj4 from "proj4";
 
@@ -36,7 +36,8 @@ const translations = {
     gone: "Gone",
     stillStanding: "Still Standing",
     surveyPtA: "Survey Point A",
-    surveyPtB: "Survey Point B"
+    surveyPtB: "Survey Point B",
+    resetView: "Reset View (Hessen)",
   },
   de: {
     title: "Koordinatentransformation",
@@ -57,7 +58,8 @@ const translations = {
     gone: "Zerstört/Ende",
     stillStanding: "Steht Noch",
     surveyPtA: "Messpunkt A",
-    surveyPtB: "Messpunkt B"
+    surveyPtB: "Messpunkt B",
+    resetView: "Ansicht zurücksetzen (Hessen)",
   }
 };
 
@@ -85,6 +87,32 @@ function MapEventHandler({ activeSurvey, onMapClick, onMouseMove }) {
   return null;
 }
 
+// Map View Controller Component
+function MapViewManager({ triggerReset, onResetComplete }) {
+    const map = useMap();
+    
+    // Exact geographic bounding box (BBox) of the Hessen state:
+    // [[Southernmost Lat, Westernmost Lng], [Northernmost Lat, Easternmost Lng]]
+    const hessenBounds = [
+      [49.39, 7.77],  // Southwest corner (near Neckarsteinach/Lorch)
+      [51.65, 10.24]  // Northeast corner (near Karlshafen/Tann)
+    ];
+  
+    useEffect(() => {
+      if (triggerReset) {
+        // flyToBounds auto-calculates the perfect zoom and center for the user's screen size
+        map.flyToBounds(hessenBounds, {
+          animate: true,
+          duration: 1.5,   // 1.5 seconds smooth transition
+          padding: [30, 30] // Adds a clean 30px buffer so Hessen doesn't touch the screen edges
+        });
+        onResetComplete(); // Reset the trigger state
+      }
+    }, [triggerReset, map, onResetComplete]);
+  
+    return null;
+  }
+
 export default function MapCanvas({ currentYear, onLangChange }) {
   const frankfurtCenter = [50.1109, 8.6821];
   const defaultZoom = 11;
@@ -97,6 +125,9 @@ export default function MapCanvas({ currentYear, onLangChange }) {
       onLangChange(newLang); // Alerts page.js so the timeline at the bottom translates too!
     }
   };
+
+  // Reset map view state
+  const [resetViewport, setResetViewport] = useState(false);
 
   // Active monuments data
   const [allFeatures, setAllFeatures] = useState([]);
@@ -285,6 +316,21 @@ export default function MapCanvas({ currentYear, onLangChange }) {
         </div>
       </div>
 
+      {/* NEW BOTTOM-LEFT: RESET TO HESSEN MAP VIEW BUTTON */}
+      <div className="absolute bottom-32 left-4 z-[999]">
+        <button
+          onClick={() => setResetViewport(true)}
+          className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-950/90 text-slate-200 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-900 shadow-lg font-sans text-xs font-semibold tracking-wide transition-all duration-300"
+          title={t.resetView}
+        >
+          {/* Hessen / Map Reset Icon */}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-emerald-400">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+          </svg>
+          {t.resetView}
+        </button>
+      </div>
+
       <MapContainer
         center={frankfurtCenter}
         zoom={defaultZoom}
@@ -292,14 +338,20 @@ export default function MapCanvas({ currentYear, onLangChange }) {
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        />
+
+        {/* Viewport Reset Controller */}
+        <MapViewManager 
+            triggerReset={resetViewport} 
+            onResetComplete={() => setResetViewport(false)} 
         />
 
         <MapEventHandler 
-          activeSurvey={surveyMode} 
-          onMapClick={handleMapClick} 
-          onMouseMove={handleMouseMove} 
+            activeSurvey={surveyMode} 
+            onMapClick={handleMapClick} 
+            onMouseMove={handleMouseMove} 
         />
 
         {/* Render Geodesic Survey Points */}
