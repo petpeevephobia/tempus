@@ -38,7 +38,7 @@ The objective of **Tempus** is to show how historical spatial-temporal datasets 
 
 ---
 
-## 📁 Data Structure (GeoJSON Schema)
+## Data Structure (GeoJSON Schema)
 
 The core dataset (`monuments.json`) uses a strictly validated GeoJSON format. Each feature contains spatial geometries mapped alongside chronological attributes:
 
@@ -57,7 +57,8 @@ The core dataset (`monuments.json`) uses a strictly validated GeoJSON format. Ea
         "start": 843,
         "end": 1250,
         "style": "Carolingian",
-        "description": "The historical heart of early Frankfurt. Emperor Charlemagne's seat of power."
+        "description": "The historical heart of early Frankfurt. Emperor Charlemagne's seat of power.",
+        "url": "https://www.frankfurt-tourismus.de/Entdecken-Und-Erleben/Sehenswuerdigkeiten/Kaiserpfalz-franconofurd"
       }
     }
   ]
