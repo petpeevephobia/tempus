@@ -50,7 +50,7 @@ const translations = {
     aboutDesc:
       "Tempus is an interactive spatiotemporal Web GIS application showcasing the historical evolution of fortifications and defensive works in Hessen from 50 BCE to 1900 AD. Designed to demonstrate modern geomatics, spatial database filtering, and geodesy principles.",
     contactMe: "Talk to the Dev :-)",
-    author: "Nadra Mohamed Sah",
+    authorDesc: "Based in Frankfurt, Germany",
     close: "Close",
   },
   de: {
@@ -78,7 +78,7 @@ const translations = {
     aboutDesc:
       "Tempus ist eine interaktive raum-zeitliche Web-GIS-Anwendung, die die historische Entwicklung von Befestigungsanlagen und Wehrbauten in Hessen von 50 v. Chr. bis 1900 n. Chr. visualisiert. Entwickelt, um moderne Geomatik, räumliche Datenbankfilterung und Geodäsie-Prinzipien zu demonstrieren.",
     contactMe: "Sprich mit der Entwicklerin :-)",
-    author: "Nadra Mohamed Sah",
+    authorDesc: "Mit Sitz in Frankfurt, Deutschland",
     close: "Schließen",
   },
 };
@@ -308,9 +308,9 @@ export default function MapCanvas({
               </span>
 
               {/* Profile & Social Row */}
-              <div className="flex items-center justify-between rounded-xl">
+              <div className="flex flex-col md:flex-row items-center justify-between rounded-xl">
                 {/* Left: Avatar & Name */}
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2.5 mb-2">
                   <div className="relative">
                     {/* Dynamic Profile Picture from GitHub */}
                     <img
@@ -328,7 +328,7 @@ export default function MapCanvas({
                       Nadra Mohamed Sah
                     </span>
                     <span className="text-[10px] text-slate-500 font-medium leading-none">
-                      {t.author}
+                      {t.authorDesc}
                     </span>
                   </div>
                 </div>
@@ -497,78 +497,13 @@ export default function MapCanvas({
       </div>
 
       {/* RIGHT PANEL: DYNAMIC COORDINATE TRANSFORMER & LANGUAGE SELECTOR */}
-      <div className="absolute top-4 right-4 z-[999] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl shadow-2xl w-72 text-slate-300 font-sans text-xs flex flex-col gap-2.5">
-        {/* Top Header holding details */}
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
-          <div className="flex items-center gap-1.5">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-4 h-4 text-emerald-400"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253"
-              />
-            </svg>
-            <span className="font-bold tracking-wide text-slate-200">
-              {t.title}
-            </span>
-          </div>
-        </div>
-
-        {/* WGS84 Section */}
-        <div>
-          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
-            {t.wgsLabel}
-          </span>
-          <div className="grid grid-cols-2 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
-            <div>
-              Lat:{" "}
-              <span className="text-emerald-400">
-                {coordsWGS84.lat.toFixed(6)}°
-              </span>
-            </div>
-            <div>
-              Lng:{" "}
-              <span className="text-emerald-400">
-                {coordsWGS84.lng.toFixed(6)}°
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* UTM Section */}
-        <div>
-          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
-            {t.utmLabel}
-          </span>
-          <div className="grid grid-cols-1 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
-            <div className="flex justify-between">
-              <span>{t.easting}:</span>
-              <span className="text-emerald-400">
-                {coordsUTM.easting.toFixed(2)} m
-              </span>
-            </div>
-            <div className="flex justify-between">
-              <span>{t.northing}:</span>
-              <span className="text-emerald-400">
-                {coordsUTM.northing.toFixed(2)} m
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Utilities Row (Info Button & Lang Switcher) */}
-        <div className="flex items-center gap-2 mt-1 pt-2 border-t border-slate-800/80">
-          {/* Info Icon Button (Aligned to the left of the language switcher) */}
+      <div className="absolute top-4 right-4 z-[999] flex flex-col gap-2.5 items-end">
+        {/* 1. MOBILE-ONLY VIEW: VERTICAL FLOATING ICON BUTTONS (Hidden on Desktop) */}
+        <div className="flex md:hidden flex-col gap-2">
+          {/* Info Icon Button */}
           <button
             onClick={handleOpenModal}
-            className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all flex items-center justify-center aspect-square"
+            className="w-10 h-10 rounded-full bg-slate-950/95 backdrop-blur-md border border-slate-800/80 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all flex items-center justify-center shadow-lg"
             title={t.aboutTitle}
           >
             <svg
@@ -577,7 +512,7 @@ export default function MapCanvas({
               viewBox="0 0 24 24"
               strokeWidth={2.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"
@@ -587,28 +522,130 @@ export default function MapCanvas({
             </svg>
           </button>
 
-          {/* Segmented Lang Selector Buttons (Stretches to fill remaining space) */}
-          <div className="flex flex-1 rounded-lg bg-slate-900 border border-slate-800 p-0.5">
+          {/* Language Toggle Icon Button (Toggles EN/DE on click) */}
+          <button
+            onClick={() => handleLangSelect(lang === "en" ? "de" : "en")}
+            className="w-10 h-10 rounded-full bg-slate-950/95 backdrop-blur-md border border-slate-800/80 text-emerald-400 hover:text-emerald-300 font-sans text-xs font-bold transition-all flex items-center justify-center shadow-lg"
+            title={lang === "en" ? "Switch to German" : "Auf Englisch wechseln"}
+          >
+            {lang.toUpperCase()}
+          </button>
+        </div>
+
+        {/* 2. DESKTOP VIEW: FULL DYNAMIC COORDINATE TRANSFORMER PANEL (Hidden on Mobile) */}
+        <div className="hidden md:flex bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl shadow-2xl w-72 text-slate-300 font-sans text-xs flex-col gap-2.5">
+          {/* Top Header holding details */}
+          <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+            <div className="flex items-center gap-1.5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-4 h-4 text-emerald-400"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253"
+                />
+              </svg>
+              <span className="font-bold tracking-wide text-slate-200">
+                {t.title}
+              </span>
+            </div>
+          </div>
+
+          {/* WGS84 Section */}
+          <div>
+            <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
+              {t.wgsLabel}
+            </span>
+            <div className="grid grid-cols-2 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
+              <div>
+                Lat:{" "}
+                <span className="text-emerald-400">
+                  {coordsWGS84.lat.toFixed(6)}°
+                </span>
+              </div>
+              <div>
+                Lng:{" "}
+                <span className="text-emerald-400">
+                  {coordsWGS84.lng.toFixed(6)}°
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* UTM Section */}
+          <div>
+            <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">
+              {t.utmLabel}
+            </span>
+            <div className="grid grid-cols-1 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
+              <div className="flex justify-between">
+                <span>{t.easting}:</span>
+                <span className="text-emerald-400">
+                  {coordsUTM.easting.toFixed(2)} m
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span>{t.northing}:</span>
+                <span className="text-emerald-400">
+                  {coordsUTM.northing.toFixed(2)} m
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Utilities Row */}
+          <div className="flex items-center gap-2 mt-1 pt-2 border-t border-slate-800/80">
+            {/* Info Icon */}
             <button
-              onClick={() => handleLangSelect("en")}
-              className={`flex-1 py-1 rounded text-[10px] font-bold transition-all ${
-                lang === "en"
-                  ? "bg-emerald-500 text-slate-950"
-                  : "text-slate-400 hover:text-slate-200"
-              }`}
+              onClick={handleOpenModal}
+              className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-emerald-400 hover:border-emerald-500/30 transition-all flex items-center justify-center aspect-square"
+              title={t.aboutTitle}
             >
-              EN
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+                />
+              </svg>
             </button>
-            <button
-              onClick={() => handleLangSelect("de")}
-              className={`flex-1 py-1 rounded text-[10px] font-bold transition-all ${
-                lang === "de"
-                  ? "bg-emerald-500 text-slate-950"
-                  : "text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              DE
-            </button>
+
+            {/* Segmented Lang Selector */}
+            <div className="flex flex-1 rounded-lg bg-slate-900 border border-slate-800 p-0.5">
+              <button
+                onClick={() => handleLangSelect("en")}
+                className={`flex-1 py-1 rounded text-[10px] font-bold transition-all ${
+                  lang === "en"
+                    ? "bg-emerald-500 text-slate-950"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => handleLangSelect("de")}
+                className={`flex-1 py-1 rounded text-[10px] font-bold transition-all ${
+                  lang === "de"
+                    ? "bg-emerald-500 text-slate-950"
+                    : "text-slate-400 hover:text-slate-200"
+                }`}
+              >
+                DE
+              </button>
+            </div>
           </div>
         </div>
       </div>
