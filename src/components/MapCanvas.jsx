@@ -15,11 +15,59 @@ proj4.defs(
   "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"
 );
 
-// Helper to format BCE/AD Years
-const formatYear = (year) => {
-  if (year === 9999) return "Still Standing";
-  if (year < 0) return `${Math.abs(year)} BCE`;
-  return `${year} AD`;
+// Localization Dictionaries
+const translations = {
+  en: {
+    title: "Coordinate Transformation",
+    surveyActive: "Surveying: Active",
+    surveyIdle: "Field Survey",
+    refEllipsoid: "Reference Ellipsoid",
+    pointA: "Point A (Start)",
+    pointB: "Point B (Target)",
+    clickMap: "Click on the map",
+    geoDistance: "Geodesic Distance",
+    reset: "Reset",
+    wgsLabel: "WGS 84 (EPSG:4326)",
+    utmLabel: "UTM Zone 32N (EPSG:25832)",
+    easting: "Easting (E)",
+    northing: "Northing (N)",
+    learnMore: "Learn More (External)",
+    built: "Built",
+    gone: "Gone",
+    stillStanding: "Still Standing",
+    surveyPtA: "Survey Point A",
+    surveyPtB: "Survey Point B"
+  },
+  de: {
+    title: "Koordinatentransformation",
+    surveyActive: "Feldmessung: Aktiv",
+    surveyIdle: "Feldmessung",
+    refEllipsoid: "Referenzellipsoid",
+    pointA: "Punkt A (Start)",
+    pointB: "Punkt B (Ziel)",
+    clickMap: "Klicken Sie auf die Karte",
+    geoDistance: "Geodätische Distanz",
+    reset: "Zurücksetzen",
+    wgsLabel: "WGS 84 (EPSG:4326)",
+    utmLabel: "UTM Zone 32N (EPSG:25832)",
+    easting: "Rechtswert (E)",
+    northing: "Hochwert (N)",
+    learnMore: "Mehr erfahren (Extern)",
+    built: "Erbaut",
+    gone: "Zerstört/Ende",
+    stillStanding: "Steht Noch",
+    surveyPtA: "Messpunkt A",
+    surveyPtB: "Messpunkt B"
+  }
+};
+
+// Helper to format BCE/AD Years depending on Language
+const formatYear = (year, lang) => {
+  if (year === 9999) return translations[lang].stillStanding;
+  if (year < 0) {
+    return lang === "de" ? `${Math.abs(year)} v. Chr.` : `${Math.abs(year)} BCE`;
+  }
+  return lang === "de" ? `${year} n. Chr.` : `${year} AD`;
 };
 
 // Map Interactivity Handler Component
@@ -37,9 +85,18 @@ function MapEventHandler({ activeSurvey, onMapClick, onMouseMove }) {
   return null;
 }
 
-export default function MapCanvas({ currentYear }) {
+export default function MapCanvas({ currentYear, onLangChange }) {
   const frankfurtCenter = [50.1109, 8.6821];
   const defaultZoom = 11;
+
+  // Language State
+  const [lang, setLang] = useState("en"); // English default
+  const handleLangSelect = (newLang) => {
+    setLang(newLang); // Updates the local state in MapCanvas
+    if (onLangChange) {
+      onLangChange(newLang); // Alerts page.js so the timeline at the bottom translates too!
+    }
+  };
 
   // Active monuments data
   const [allFeatures, setAllFeatures] = useState([]);
@@ -53,6 +110,8 @@ export default function MapCanvas({ currentYear }) {
   // Coordinate Transformer States (Dynamic Cursor Tracking)
   const [coordsWGS84, setCoordsWGS84] = useState({ lat: 50.1109, lng: 8.6821 });
   const [coordsUTM, setCoordsUTM] = useState({ easting: 0, northing: 0 });
+
+  const t = translations[lang];
 
   // 1. Fetch GeoJSON
   useEffect(() => {
@@ -126,34 +185,34 @@ export default function MapCanvas({ currentYear }) {
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2z" />
           </svg>
-          {surveyMode ? "Feldmessung: Aktiv" : "Feldmessung"}
+          {surveyMode ? t.surveyActive : t.surveyIdle}
         </button>
 
         {surveyMode && (
           <div className="bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl shadow-2xl w-64 text-slate-300 font-sans text-xs flex flex-col gap-2 animate-fadeIn">
             <div className="flex justify-between border-b border-slate-800/80 pb-2">
-              <span className="text-slate-400">Referenzellipsoid:</span>
+              <span className="text-slate-400">{t.refEllipsoid}:</span>
               <span className="font-mono text-emerald-400 font-bold">WGS 84</span>
             </div>
             
             <div className="flex flex-col gap-1.5 py-1">
               <div className="flex justify-between">
-                <span>Punkt A:</span>
+                <span>{t.pointA}:</span>
                 <span className="font-mono text-slate-400">
-                  {points[0] ? `${points[0][0].toFixed(4)}°, ${points[0][1].toFixed(4)}°` : "Karte anklicken"}
+                  {points[0] ? `${points[0][0].toFixed(4)}°, ${points[0][1].toFixed(4)}°` : t.clickMap}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span>Punkt B:</span>
+                <span>{t.pointB}:</span>
                 <span className="font-mono text-slate-400">
-                  {points[1] ? `${points[1][0].toFixed(4)}°, ${points[1][1].toFixed(4)}°` : "Karte anklicken"}
+                  {points[1] ? `${points[1][0].toFixed(4)}°, ${points[1][1].toFixed(4)}°` : t.clickMap}
                 </span>
               </div>
             </div>
 
             {geodesicDistance !== null && (
               <div className="border-t border-slate-800/80 pt-2 mt-1">
-                <span className="text-slate-400 block mb-0.5">Geodätische Distanz:</span>
+                <span className="text-slate-400 block mb-0.5">{t.geoDistance}:</span>
                 <div className="text-xl font-bold text-emerald-400 font-mono tracking-wide">
                   {geodesicDistance.toFixed(3)} km
                 </div>
@@ -164,23 +223,47 @@ export default function MapCanvas({ currentYear }) {
               onClick={resetSurvey}
               className="mt-2 text-center text-[10px] uppercase font-bold tracking-wider text-rose-400 hover:text-rose-300 transition-colors bg-rose-950/20 py-1 rounded"
             >
-              Zurücksetzen
+              {t.reset}
             </button>
           </div>
         )}
       </div>
 
-      {/* RIGHT PANEL: DYNAMIC COORDINATE TRANSFORMER */}
+      {/* RIGHT PANEL: DYNAMIC COORDINATE TRANSFORMER & LANGUAGE SELECTOR */}
       <div className="absolute top-4 right-4 z-[999] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl shadow-2xl w-72 text-slate-300 font-sans text-xs flex flex-col gap-2.5">
-        <div className="flex items-center gap-2 border-b border-slate-800/80 pb-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-emerald-400">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
-          </svg>
-          <span className="font-bold tracking-wide text-slate-200">Koordinatentransformation</span>
+        
+        {/* Top Header holding details & Selector */}
+        <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
+          <div className="flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-emerald-400">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+            </svg>
+            <span className="font-bold tracking-wide text-slate-200">{t.title}</span>
+          </div>
+
+          {/* Segmented Lang Selector Buttons */}
+          <div className="flex rounded-lg bg-slate-900 border border-slate-800 p-0.5">
+            <button
+              onClick={() => handleLangSelect("en")}
+              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+                lang === "en" ? "bg-emerald-500 text-slate-950" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              EN
+            </button>
+            <button
+              onClick={() => handleLangSelect("de")}
+              className={`px-2 py-1 rounded text-[10px] font-bold transition-all ${
+                lang === "de" ? "bg-emerald-500 text-slate-950" : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              DE
+            </button>
+          </div>
         </div>
 
         <div>
-          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">WGS 84 (EPSG:4326)</span>
+          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">{t.wgsLabel}</span>
           <div className="grid grid-cols-2 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
             <div>Lat: <span className="text-emerald-400">{coordsWGS84.lat.toFixed(6)}°</span></div>
             <div>Lng: <span className="text-emerald-400">{coordsWGS84.lng.toFixed(6)}°</span></div>
@@ -188,14 +271,14 @@ export default function MapCanvas({ currentYear }) {
         </div>
 
         <div>
-          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">UTM Zone 32N (EPSG:25832)</span>
+          <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">{t.utmLabel}</span>
           <div className="grid grid-cols-1 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
             <div className="flex justify-between">
-              <span>Easting (E):</span>
+              <span>{t.easting}:</span>
               <span className="text-emerald-400">{coordsUTM.easting.toFixed(2)} m</span>
             </div>
             <div className="flex justify-between">
-              <span>Northing (N):</span>
+              <span>{t.northing}:</span>
               <span className="text-emerald-400">{coordsUTM.northing.toFixed(2)} m</span>
             </div>
           </div>
@@ -224,7 +307,7 @@ export default function MapCanvas({ currentYear }) {
           <Marker key={`survey-pt-${index}`} position={point}>
             <Popup>
               <span className="font-sans font-bold text-xs text-slate-800">
-                {index === 0 ? "Punkt A" : "Punkt B"}
+                {index === 0 ? t.surveyPtA : t.surveyPtB}
               </span>
             </Popup>
           </Marker>
@@ -247,7 +330,7 @@ export default function MapCanvas({ currentYear }) {
         {visibleFeatures.map((feature, idx) => {
           const [longitude, latitude] = feature.geometry.coordinates;
           const { name, start, end, style, description, url } = feature.properties;
-          // If no explicit URL is in the database, auto-generate a fallback Wikipedia search link
+          
           const activeUrl = url || `https://de.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(name)}`;
 
           return (
@@ -264,24 +347,23 @@ export default function MapCanvas({ currentYear }) {
                     {description}
                   </p>
 
-                  {/* This will now ALWAYS render because activeUrl is guaranteed to exist */}
                   {activeUrl && (
-                  <a 
+                    <a 
                       href={activeUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-1.5 w-full bg-slate-900 hover:bg-emerald-600 text-white hover:text-slate-950 font-bold text-[10px] tracking-wide uppercase py-1.5 px-3 rounded-lg mb-2.5 transition-all duration-200"
-                  >
-                      Mehr erfahren (Extern)
+                    >
+                      {t.learnMore}
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                       </svg>
-                  </a>
+                    </a>
                   )}
 
                   <div className="flex justify-between text-[9px] text-slate-400 pt-1 border-t border-slate-100 font-mono">
-                    <span>Built: {formatYear(start)}</span>
-                    <span>Gone: {formatYear(end)}</span>
+                    <span>{t.built}: {formatYear(start, lang)}</span>
+                    <span>{t.gone}: {formatYear(end, lang)}</span>
                   </div>
                 </div>
               </Popup>
