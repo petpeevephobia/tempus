@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMapEvents } from "react-leaflet";
 import * as turf from "@turf/turf";
-import proj4 from "proj4"; // 1. Import Proj4
+import proj4 from "proj4";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 
-// 2. Define EPSG:25832 (ETRS89 / UTM Zone 32N) Proj4 string
+// Define EPSG:25832 (ETRS89 / UTM Zone 32N) Proj4 string
 proj4.defs(
   "EPSG:25832",
   "+proj=utm +zone=32 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs"
@@ -54,7 +54,7 @@ export default function MapCanvas({ currentYear }) {
   const [coordsWGS84, setCoordsWGS84] = useState({ lat: 50.1109, lng: 8.6821 });
   const [coordsUTM, setCoordsUTM] = useState({ easting: 0, northing: 0 });
 
-  // 3. Fetch GeoJSON
+  // 1. Fetch GeoJSON
   useEffect(() => {
     fetch("/monuments.json")
       .then((res) => {
@@ -67,7 +67,7 @@ export default function MapCanvas({ currentYear }) {
       .catch((err) => console.error("Error loading geodata:", err));
   }, []);
 
-  // 4. Filter Active Features by Timeline Year
+  // 2. Filter Active Features by Timeline Year
   useEffect(() => {
     const filtered = allFeatures.filter((feature) => {
       const { start, end } = feature.properties;
@@ -76,7 +76,7 @@ export default function MapCanvas({ currentYear }) {
     setVisibleFeatures(filtered);
   }, [currentYear, allFeatures]);
 
-  // 5. Handle Geodetic Distance Click Calculation
+  // 3. Handle Geodetic Distance Click Calculation
   const handleMapClick = (latlng) => {
     if (points.length < 2) {
       const updatedPoints = [...points, latlng];
@@ -99,12 +99,10 @@ export default function MapCanvas({ currentYear }) {
     setGeodesicDistance(null);
   };
 
-  // 6. Real-time Coordinate Transformation
+  // 4. Real-time Coordinate Transformation
   const handleMouseMove = (lat, lng) => {
     setCoordsWGS84({ lat, lng });
 
-    // Proj4 conversion expects source coordinates as [longitude, latitude]
-    // converting from standard WGS84 (implied) to UTM Zone 32N
     const [easting, northing] = proj4("EPSG:25832", [lng, lat]);
     setCoordsUTM({ easting, northing });
   };
@@ -175,23 +173,20 @@ export default function MapCanvas({ currentYear }) {
       {/* RIGHT PANEL: DYNAMIC COORDINATE TRANSFORMER */}
       <div className="absolute top-4 right-4 z-[999] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-4 rounded-xl shadow-2xl w-72 text-slate-300 font-sans text-xs flex flex-col gap-2.5">
         <div className="flex items-center gap-2 border-b border-slate-800/80 pb-2">
-          {/* Globe Icon */}
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 text-emerald-400">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
           </svg>
           <span className="font-bold tracking-wide text-slate-200">Koordinatentransformation</span>
         </div>
 
-        {/* Geographic WGS84 coordinates */}
         <div>
           <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">WGS 84 (EPSG:4326)</span>
           <div className="grid grid-cols-2 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
-            <div>Latitude: <span className="text-emerald-400">{coordsWGS84.lat.toFixed(6)}°</span></div>
-            <div>Longitude: <span className="text-emerald-400">{coordsWGS84.lng.toFixed(6)}°</span></div>
+            <div>Lat: <span className="text-emerald-400">{coordsWGS84.lat.toFixed(6)}°</span></div>
+            <div>Lng: <span className="text-emerald-400">{coordsWGS84.lng.toFixed(6)}°</span></div>
           </div>
         </div>
 
-        {/* Projected UTM Zone 32N coordinates */}
         <div>
           <span className="text-slate-500 font-semibold uppercase text-[10px] tracking-wider">UTM Zone 32N (EPSG:25832)</span>
           <div className="grid grid-cols-1 gap-1 mt-1 font-mono text-[11px] bg-slate-900/50 p-2 rounded-lg border border-slate-800/40">
@@ -218,7 +213,6 @@ export default function MapCanvas({ currentYear }) {
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         />
 
-        {/* Event handler registration */}
         <MapEventHandler 
           activeSurvey={surveyMode} 
           onMapClick={handleMapClick} 
@@ -252,17 +246,39 @@ export default function MapCanvas({ currentYear }) {
         {/* Render visible timeline monuments */}
         {visibleFeatures.map((feature, idx) => {
           const [longitude, latitude] = feature.geometry.coordinates;
-          const { name, start, end, style, description } = feature.properties;
+          const { name, start, end, style, description, url } = feature.properties;
+          // If no explicit URL is in the database, auto-generate a fallback Wikipedia search link
+          const activeUrl = url || `https://de.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(name)}`;
 
           return (
             <Marker key={`${name}-${idx}`} position={[latitude, longitude]}>
               <Popup>
-                <div className="text-slate-900 font-sans p-1">
+                <div className="text-slate-900 font-sans p-1 w-64">
                   <h3 className="font-bold text-sm border-b pb-1 mb-1">{name}</h3>
+                  
                   <p className="text-[10px] text-emerald-600 font-semibold uppercase tracking-wider mb-1">
                     Style: {style}
                   </p>
-                  <p className="text-xs mb-2 text-slate-700 leading-relaxed">{description}</p>
+                  
+                  <p className="text-xs mb-3 text-slate-700 leading-relaxed">
+                    {description}
+                  </p>
+
+                  {/* This will now ALWAYS render because activeUrl is guaranteed to exist */}
+                  {activeUrl && (
+                  <a 
+                      href={activeUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-1.5 w-full bg-slate-900 hover:bg-emerald-600 text-white hover:text-slate-950 font-bold text-[10px] tracking-wide uppercase py-1.5 px-3 rounded-lg mb-2.5 transition-all duration-200"
+                  >
+                      Mehr erfahren (Extern)
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3 h-3">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                  </a>
+                  )}
+
                   <div className="flex justify-between text-[9px] text-slate-400 pt-1 border-t border-slate-100 font-mono">
                     <span>Built: {formatYear(start)}</span>
                     <span>Gone: {formatYear(end)}</span>

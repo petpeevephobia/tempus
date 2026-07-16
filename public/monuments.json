@@ -5,102 +5,60 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          8.6821,
-          50.1109
-        ]
+        "coordinates": [8.6821, 50.1109]
       },
       "properties": {
         "name": "Kaiserpfalz Franconofurd",
         "start": 843,
         "end": 1250,
         "style": "Carolingian",
-        "description": "The historic origin of Frankfurt. Built as a royal palace, serving as a seat of power for Charlemagne's successors."
+        "description": "The historical heart of early Frankfurt. Emperor Charlemagne's seat of power.",
+        "url": "https://www.frankfurt-tourismus.de/Entdecken-Und-Erleben/Sehenswuerdigkeiten/Kaiserpfalz-franconofurd"
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          8.6825,
-          50.1105
-        ]
+        "coordinates": [8.5661, 50.2725]
       },
       "properties": {
-        "name": "Frankfurter Dom (St. Bartholomew's)",
-        "start": 1250,
-        "end": 9999,
-        "style": "Gothic",
-        "description": "The dominant Gothic collegiate church of Frankfurt, serving as the official election and coronation site of Holy Roman Emperors."
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.5644,
-          50.2721
-        ]
-      },
-      "properties": {
-        "name": "Saalburg Roman Fort",
+        "name": "Römerkastell Saalburg",
         "start": 90,
         "end": 260,
         "style": "Roman",
-        "description": "A cohort fort on the Limes Germanicus, serving as a key military outpost along the outer border of the Roman Empire."
+        "description": "A completely reconstructed Roman cohort fort located on the Upper Germanic Limes.",
+        "url": "https://www.saalburgmuseum.de/en/"
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          8.4414,
-          50.1831
-        ]
+        "coordinates": [9.1925, 50.2031]
       },
       "properties": {
-        "name": "Burg Kronberg",
-        "start": 1220,
+        "name": "Kaiserpfalz Gelnhausen",
+        "start": 1170,
         "end": 9999,
-        "style": "High Medieval",
-        "description": "An imposing hilltop fortress nestled in the Taunus mountains, built by the noble Knights of Kronberg."
+        "style": "Romanesque",
+        "description": "The best-preserved Palas architectural ruin built under Emperor Friedrich I Barbarossa.",
+        "url": "https://www.schloesser-hessen.de/de/kaiserpfalz-gelnhausen"
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          8.6808,
-          50.1098
-        ]
+        "coordinates": [8.6869, 50.1118]
       },
       "properties": {
-        "name": "Staufenmauer (City Wall)",
+        "name": "Staufenmauer",
         "start": 1180,
-        "end": 1806,
-        "style": "Romanesque Defensive",
-        "description": "The first stone boundary wall erected around Frankfurt to defend the free imperial city during the Staufen dynasty."
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          8.6543,
-          50.1234
-        ]
-      },
-      "properties": {
-        "name": "Early Roman Frontier Trench",
-        "start": -50,
-        "end": 260,
-        "style": "Early Roman",
-        "description": "An early defensive trench system established during Roman expansion campaigns."
+        "end": 1582,
+        "style": "Romanesque",
+        "description": "The ancient stone fortifications built to protect the core boundaries of Alt-Frankfurt.",
+        "url": "https://de.wikipedia.org/wiki/Staufenmauer"
       }
     }
   ]
