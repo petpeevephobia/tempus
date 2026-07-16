@@ -85,6 +85,23 @@
         "style": "Romanesque Defensive",
         "description": "The first stone boundary wall erected around Frankfurt to defend the free imperial city during the Staufen dynasty."
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6543,
+          50.1234
+        ]
+      },
+      "properties": {
+        "name": "Early Roman Frontier Trench",
+        "start": -50,
+        "end": 260,
+        "style": "Early Roman",
+        "description": "An early defensive trench system established during Roman expansion campaigns."
+      }
     }
   ]
 }

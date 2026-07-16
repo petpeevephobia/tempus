@@ -16,6 +16,12 @@ export default function MapCanvas({ currentYear }) {
   const [allFeatures, setAllFeatures] = useState([]);
   const [visibleFeatures, setVisibleFeatures] = useState([]);
 
+  const formatYear = (year) => {
+    if (year === 9999) return "Still Standing";
+    if (year < 0) return `${Math.abs(year)} BCE`;
+    return `${year} AD`;
+  };
+
   // 1. Fetch the compiled GeoJSON raw materials on component mount
   useEffect(() => {
     fetch("/monuments.json")
@@ -71,8 +77,8 @@ export default function MapCanvas({ currentYear }) {
                   </p>
                   <p className="text-xs mb-2 text-slate-700 leading-relaxed">{description}</p>
                   <div className="flex justify-between text-[9px] text-slate-400 pt-1 border-t border-slate-100 font-mono">
-                    <span>Built: {start} AD</span>
-                    <span>Gone: {end === 9999 ? "Still Standing" : `${end} AD`}</span>
+                  <span>Built: {formatYear(start)}</span>
+                  <span>Gone: {formatYear(end)}</span>
                   </div>
                 </div>
               </Popup>

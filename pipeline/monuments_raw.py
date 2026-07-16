@@ -44,5 +44,15 @@ RAW_MONUMENTS = [
         "end": 1806,
         "style": "Romanesque Defensive",
         "description": "The first stone boundary wall erected around Frankfurt to defend the free imperial city during the Staufen dynasty."
+    },
+    # Example of a BCE monument in pipeline/monuments_raw.py
+    {
+        "name": "Early Roman Frontier Trench",
+        "latitude": 50.1234,
+        "longitude": 8.6543,
+        "start": -50,  # 50 BCE
+        "end": 260,    # 260 AD
+        "style": "Early Roman",
+        "description": "An early defensive trench system established during Roman expansion campaigns."
     }
 ]
