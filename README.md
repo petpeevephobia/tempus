@@ -8,7 +8,7 @@ This project demonstrates the core competencies required of a modern **Geomatike
 
 ## Live Demo
 
-🔗 [https://tempus-azure.vercel.app/](https://tempus-azure.vercel.app/)
+🔗 [https://tempusgeo.vercel.app/](https://tempusgeo.vercel.app/)
 
 ---
 
