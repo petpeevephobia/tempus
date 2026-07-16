@@ -52,8 +52,8 @@ export default function Home() {
         </div>
         <input
           type="range"
-          min="-50"
-          max="1900"
+          min="-450"
+          max="2026"
           value={currentYear}
           onChange={(e) => setCurrentYear(parseInt(e.target.value, 10))}
           className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500 focus:outline-none"

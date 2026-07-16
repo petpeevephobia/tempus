@@ -13,7 +13,7 @@
         "end": 1250,
         "style": "Carolingian",
         "description": "The historical heart of early Frankfurt. Emperor Charlemagne's seat of power.",
-        "url": "https://www.frankfurt-tourismus.de/Entdecken-Und-Erleben/Sehenswuerdigkeiten/Kaiserpfalz-franconofurd"
+        "url": "https://www.archaeologisches-museum-frankfurt.de/de/ausstellungen/kaiserpfalz-franconofurd"
       }
     },
     {
@@ -65,15 +65,450 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [8.67122, 50.43395]
+        "coordinates": [8.6816, 50.1175]
       },
       "properties": {
-        "name": "Kastell Butzbach",
+        "name": "Eschenheimer Turm",
+        "start": 1426,
+        "end": 9999,
+        "style": "Late Gothic",
+        "description": "The finest of Frankfurt's former 42 town wall watchtowers, standing 47 meters tall as a striking relic of the medieval city fortifications.",
+        "url": "https://de.wikipedia.org/wiki/Eschenheimer_Turm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6819, 50.1101]
+      },
+      "properties": {
+        "name": "Saalhof",
+        "start": 1150,
+        "end": 9999,
+        "style": "Romanesque / Baroque",
+        "description": "The oldest preserved structural monument in Frankfurt's historic center, originally built as a Staufer-era royal imperial castle (Reichsburg).",
+        "url": "https://de.wikipedia.org/wiki/Saalhof"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6817, 50.1098]
+      },
+      "properties": {
+        "name": "Rententurm",
+        "start": 1456,
+        "end": 9999,
+        "style": "Late Gothic",
+        "description": "A fortified harbor gate tower along the Main River, serving as the strategic customs house and defensive anchor of the Saalhof complex.",
+        "url": "https://de.wikipedia.org/wiki/Rententurm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6893, 50.1075]
+      },
+      "properties": {
+        "name": "Kuhhirtenturm",
+        "start": 1390,
+        "end": 9999,
+        "style": "Gothic",
+        "description": "A southern bastion tower in Alt-Sachsenhausen that originally guarded the bridgeheads, later famously used as a residence by composer Paul Hindemith.",
+        "url": "https://de.wikipedia.org/wiki/Kuhhirtenturm"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6853, 50.1108]
+      },
+      "properties": {
+        "name": "Kaiserdom St. Bartholomäus",
+        "start": 1250,
+        "end": 9999,
+        "style": "Gothic",
+        "description": "The Imperial Cathedral of Saint Bartholomew. The grand site of election and coronation for the Holy Roman Emperors.",
+        "url": "https://de.wikipedia.org/wiki/Kaiserdom_St._Bartholom%C3%A4us"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6756, 50.1136]
+      },
+      "properties": {
+        "name": "Hauptwache",
+        "start": 1730,
+        "end": 9999,
+        "style": "Baroque",
+        "description": "The historic central guardhouse and prison facility of Frankfurt's municipal militia, famously stormed during the 1833 democratic uprising.",
+        "url": "https://de.wikipedia.org/wiki/Hauptwache_(Geb%C3%A4ude)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5463, 50.0984]
+      },
+      "properties": {
+        "name": "Schloss Höchst",
+        "start": 1356,
+        "end": 9999,
+        "style": "Renaissance / Gothic",
+        "description": "The former residency of the Archbishops of Mainz, built to enforce tariffs and safeguard Mainz's territory on the western flank of Frankfurt.",
+        "url": "https://de.wikipedia.org/wiki/Hoechster_Schloss"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6826, 50.1121]
+      },
+      "properties": {
+        "name": "Staufenmauer (An der Staufenmauer)",
+        "start": 1180,
+        "end": 9999,
+        "style": "Romanesque",
+        "description": "A surviving open-air stretch of Frankfurt's first massive stone ring-wall, built under the Hohenstaufen emperors to shield the expanding Altstadt.",
+        "url": "https://de.wikipedia.org/wiki/Staufenmauer"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6806, 50.1102]
+      },
+      "properties": {
+        "name": "Der Römer",
+        "start": 1405,
+        "end": 9999,
+        "style": "Gothic / Renaissance",
+        "description": "The historic, three-gabled city hall complex of Frankfurt that hosted the coronation banquets of the Holy Roman Empire.",
+        "url": "https://de.wikipedia.org/wiki/R%C3%B6mer_(Frankfurt_am_Main)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6837, 50.1103]
+      },
+      "properties": {
+        "name": "Alte Stadtwaage",
+        "start": 1503,
+        "end": 1944,
+        "style": "Renaissance",
+        "description": "The former municipal weighing house and central standard-measure office, a masterfully framed half-timbered house destroyed during WWII and rebuilt in the New Old Town.",
+        "url": "https://de.wikipedia.org/wiki/Stadtwaage_(Frankfurt_am_Main)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.7042, 50.1418]
+      },
+      "properties": {
+        "name": "Friedberger Warte",
+        "start": 1478,
+        "end": 9999,
+        "style": "Gothic / Renaissance",
+        "description": "One of the original fortified outer watchtowers of Frankfurt's Landwehr defense system, strategically guarding the trade route to Friedberg.",
+        "url": "https://de.wikipedia.org/wiki/Friedberger_Warte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6873, 50.0898]
+      },
+      "properties": {
+        "name": "Sachsenhäuser Warte",
+        "start": 1414,
+        "end": 9999,
+        "style": "Gothic",
+        "description": "A fortified watchtower built as part of the outer defense ring to protect the southern flanks of Sachsenhausen along the trade route to Darmstadt.",
+        "url": "https://de.wikipedia.org/wiki/Sachsenh%C3%A4user_Warte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6504, 50.1197]
+      },
+      "properties": {
+        "name": "Bockenheimer Warte",
+        "start": 1435,
+        "end": 9999,
+        "style": "Late Gothic",
+        "description": "A landmark watchtower guarding the western border of Frankfurt's territory, surviving as a stark architectural anchor of the Bockenheim district.",
+        "url": "https://de.wikipedia.org/wiki/Bockenheimer_Warte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6436, 50.1030]
+      },
+      "properties": {
+        "name": "Galluswarte",
+        "start": 1414,
+        "end": 9999,
+        "style": "Gothic",
+        "description": "Originally known as the Galgenwarte, this outer defensive watchtower guarded the western trade routes through the Mainzer Landstraße.",
+        "url": "https://de.wikipedia.org/wiki/Galluswarte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5083, 50.1811]
+      },
+      "properties": {
+        "name": "Burg Kronberg",
+        "start": 1220,
+        "end": 9999,
+        "style": "Romanesque / Gothic",
+        "description": "An impressive hilltop castle complex in the Taunus mountains that served as the ancestral seat of the powerful Knights of Kronberg.",
+        "url": "https://de.wikipedia.org/wiki/Burg_Kronberg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.4628, 50.1831]
+      },
+      "properties": {
+        "name": "Burgruine Königstein",
+        "start": 1200,
+        "end": 1796,
+        "style": "Romanesque / Renaissance",
+        "description": "One of the largest fortress ruins in Germany, which guarded highly strategic military and trade paths through the Taunus range before its destruction.",
+        "url": "https://de.wikipedia.org/wiki/Burg_K%C3%B6nigstein"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5663, 50.2711]
+      },
+      "properties": {
+        "name": "Römerkastell Saalburg",
         "start": 90,
         "end": 260,
-        "style": "Roman cohort fort",
-        "description": "Roman fort in the Butzbach district on the Wetterau Limes. Sources note that there were two forts in the area, including the border fort popularly known as Hunneburg.",
-        "url": "https://de.wikipedia.org/wiki/Kastell_Butzbach"
+        "style": "Roman Imperial (Military)",
+        "description": "A highly fortified cohort fort along the Upper Germanic Limes, reconstructed in the late 19th century as an open-air archaeological park.",
+        "url": "https://de.wikipedia.org/wiki/Kastell_Saalburg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6806, 50.1092]
+      },
+      "properties": {
+        "name": "St. Leonhard",
+        "start": 1219,
+        "end": 9999,
+        "style": "Romanesque / Late Gothic",
+        "description": "A Romanesque basilica originally gifted by Emperor Frederick II, located right next to the historic city wall line near the Main River.",
+        "url": "https://de.wikipedia.org/wiki/St._Leonhard_(Frankfurt_am_Main)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6783, 50.1094]
+      },
+      "properties": {
+        "name": "Karmeliterkloster",
+        "start": 1246,
+        "end": 9999,
+        "style": "Gothic / Modern",
+        "description": "The only preserved monastery complex in Frankfurt's Altstadt, hosting remarkable late medieval murals by Jörg Ratgeb and housing the Archaeological Museum.",
+        "url": "https://de.wikipedia.org/wiki/Karmeliterkloster_(Frankfurt_am_Main)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6875, 50.1100]
+      },
+      "properties": {
+        "name": "Alte Brücke",
+        "start": 1222,
+        "end": 9999,
+        "style": "Medieval / Stone Arch",
+        "description": "Frankfurt's oldest stone bridge crossing, which historically featured defensive towers and gates to control passage across the Main River.",
+        "url": "https://de.wikipedia.org/wiki/Alte_Br%C3%BCcke_(Frankfurt_am_Main)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6253, 50.1581]
+      },
+      "properties": {
+        "name": "Römerstadt Nida (Kastell Heddernheim)",
+        "start": 75,
+        "end": 260,
+        "style": "Roman Imperial (Civitas)",
+        "description": "An ancient Roman military garrison fort and administrative capital of Civitas Taunensium, once standing as a massive settlement on the modern-day northern edge of Frankfurt.",
+        "url": "https://de.wikipedia.org/wiki/Nida_(r%C3%B6mische_Stadt)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5283, 50.2192]
+      },
+      "properties": {
+        "name": "Altkönig Ringwall",
+        "start": -450,
+        "end": -100,
+        "style": "La Tène (Celtic Ringwall)",
+        "description": "A prehistoric Celtic hillfort with two concentric monumental dry-stone ring walls, sitting atop the high peak of the Altkönig in the Taunus mountains.",
+        "url": "https://de.wikipedia.org/wiki/Ringwall_Altk%C3%B6nig"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.9719, 50.0436]
+      },
+      "properties": {
+        "name": "Einhard-Basilika (Seligenstadt)",
+        "start": 830,
+        "end": 9999,
+        "style": "Carolingian",
+        "description": "One of the absolute finest surviving examples of pure Carolingian architecture north of the Alps, erected by Einhard, the personal biographer of Charlemagne.",
+        "url": "https://de.wikipedia.org/wiki/Einhard-Basilika_(Seligenstadt)"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.5678, 49.6536]
+      },
+      "properties": {
+        "name": "Königshalle Lorsch",
+        "start": 880,
+        "end": 9999,
+        "style": "Carolingian",
+        "description": "The world-famous Torhalle (Gatehouse) of the former Lorsch Abbey. A UNESCO World Heritage site and a breathtaking monument to early medieval imperial representation.",
+        "url": "https://de.wikipedia.org/wiki/Kloster_Lorsch"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6942, 50.1558]
+      },
+      "properties": {
+        "name": "Heidenmauer (Frankfurt-Sossenheim)",
+        "start": 350,
+        "end": 9999,
+        "style": "Late Roman (Defensive)",
+        "description": "Remnants of ancient late-Roman boundary and defensive wall structures positioned along early trade corridors in the Nidda river valleys.",
+        "url": "https://de.wikipedia.org/wiki/Sossenheim"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.9189, 50.1331]
+      },
+      "properties": {
+        "name": "Römerkastell Kesselstadt",
+        "start": 85,
+        "end": 120,
+        "style": "Roman Imperial (Military)",
+        "description": "One of the largest Roman auxiliary forts built during the Flavian-era campaigns to control crossings along the northern banks of the Main River.",
+        "url": "https://de.wikipedia.org/wiki/Kastell_Kesselstadt"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.6531, 50.2522]
+      },
+      "properties": {
+        "name": "Römerkastell Lochmühle",
+        "start": 90,
+        "end": 260,
+        "style": "Roman Imperial (Limes Fort)",
+        "description": "A small fortified Roman border outpost (Kleinkastell) erected to garrison troops guarding the direct pass routes over the Limes boundary line.",
+        "url": "https://de.wikipedia.org/wiki/Kleinkastell_Lochm%C3%BChle"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.4831, 50.2119]
+      },
+      "properties": {
+        "name": "Heidetränk-Oppidum",
+        "start": -300,
+        "end": -50,
+        "style": "Late Celtic (Civic Fortification)",
+        "description": "One of the largest Celtic city-complexes in Central Europe, enclosed by kilometers of massive defensive gravel-core and timber walls.",
+        "url": "https://de.wikipedia.org/wiki/Heidetr%C3%A4nk-Oppidum"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.3006, 50.0461]
+      },
+      "properties": {
+        "name": "Kastell Rheingönheim (Mainz-Kastel)",
+        "start": 40,
+        "end": 70,
+        "style": "Early Roman Imperial (Fort)",
+        "description": "The crucial early-Roman military bridgehead fortress (Castellum Mattiacorum) built directly opposite Mogontiacum to secure safe access to the interior.",
+        "url": "https://de.wikipedia.org/wiki/Kastell_Rheing%C3%B6nheim"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [8.7183, 50.1136]
+      },
+      "properties": {
+        "name": "Alt-Sachsenhausen Merovingian Graves",
+        "start": 550,
+        "end": 750,
+        "style": "Frankish-Merovingian",
+        "description": "Archaeological site of an early Frankish burial ground, proving permanent medieval settlement of the riverbanks long before Frankfurt's first formal mention.",
+        "url": "https://www.archaeologisches-museum-frankfurt.de/de/merowingerzeitliche-graeberfelder"
       }
     }
   ]
