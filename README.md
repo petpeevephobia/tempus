@@ -14,7 +14,7 @@ This project demonstrates the core competencies required of a modern **Geomatike
 
 ## Project Overview & Objective
 
-The objective of **Tempus** is to show how historical spatial-temporal datasets can be visualized dynamically. Rather than relying on static paper maps, this application allows users to slide through centuries of history (from **50 BCE** to **1900 AD**) to see defensive landmarks appear, change, and disappear in real-time as the geopolitical landscape of Frankfurt evolved.
+The objective of **Tempus** is to show how historical spatial-temporal datasets can be visualized dynamically. Rather than relying on static paper maps, this application allows users to slide through centuries of history (from **450 BCE** to **1900 AD**) to see defensive landmarks appear, change, and disappear in real-time as the geopolitical landscape of Frankfurt evolved.
 
 ### Geomatics Competencies Demonstrated:
 
@@ -70,9 +70,9 @@ The core dataset (`monuments.json`) uses a strictly validated GeoJSON format. Ea
 
 ## Key Features Implemented
 
-### 1. Interactive Timeline Slider (50 BCE – 1900 AD)
+### 1. Interactive Timeline Slider (450 BCE – 1900 AD)
 
-* A custom slider interface filtering live geographic features across a range starting in the early Roman era (**50 BCE**) up to the industrial era (**1900 AD**).
+* A custom slider interface filtering live geographic features across a range starting in the early Roman era (**450 BCE**) up to the industrial era (**1900 AD**).
 * Handles complex chronological conversions (formatting negative integers cleanly as "BCE" and positive integers as "AD" inside both the timeline display and map popups).
 * Markers dynamically mount and unmount from the Leaflet canvas depending on the selected year state.
 

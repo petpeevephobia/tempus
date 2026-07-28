@@ -48,7 +48,7 @@ const translations = {
     resetView: "Reset View (Hessen)",
     aboutTitle: "Tempus",
     aboutDesc:
-      "Tempus is an interactive spatiotemporal Web GIS application showcasing the historical evolution of fortifications and defensive works in Hessen from 50 BCE to 1900 AD. Designed to demonstrate modern geomatics, spatial database filtering, and geodesy principles.",
+      "Tempus is an interactive spatiotemporal Web GIS application showcasing the historical evolution of fortifications and defensive works in Hessen from 450 BCE to 1900 AD. Designed to demonstrate modern geomatics, spatial database filtering, and geodesy principles.",
     contactMe: "Talk to the Dev :-)",
     authorDesc: "Based in Frankfurt, Germany",
     close: "Close",
@@ -76,7 +76,7 @@ const translations = {
     resetView: "Ansicht zurücksetzen (Hessen)",
     aboutTitle: "Tempus",
     aboutDesc:
-      "Tempus ist eine interaktive raum-zeitliche Web-GIS-Anwendung, die die historische Entwicklung von Befestigungsanlagen und Wehrbauten in Hessen von 50 v. Chr. bis 1900 n. Chr. visualisiert. Entwickelt, um moderne Geomatik, räumliche Datenbankfilterung und Geodäsie-Prinzipien zu demonstrieren.",
+      "Tempus ist eine interaktive raum-zeitliche Web-GIS-Anwendung, die die historische Entwicklung von Befestigungsanlagen und Wehrbauten in Hessen von 450 v. Chr. bis 1900 n. Chr. visualisiert. Entwickelt, um moderne Geomatik, räumliche Datenbankfilterung und Geodäsie-Prinzipien zu demonstrieren.",
     contactMe: "Sprich mit der Entwicklerin :-)",
     authorDesc: "Mit Sitz in Frankfurt, Deutschland",
     close: "Schließen",
@@ -143,7 +143,7 @@ export default function MapCanvas({
   const frankfurtCenter = [50.1109, 8.6821];
   const defaultZoom = 11;
 
-  // Modify your setInfoOpen triggers to notify the parent layout
+  // Modify setInfoOpen triggers to notify the parent layout
   const handleOpenModal = () => {
     setInfoOpen(true);
     if (onModalToggle) onModalToggle(true);
@@ -157,7 +157,7 @@ export default function MapCanvas({
   // Language State
   const [lang, setLang] = useState("en"); // English default
   const handleLangSelect = (newLang) => {
-    setLang(newLang); // Updates the local state in MapCanvas
+    setLang(newLang); // Updates local state in MapCanvas
     if (onLangChange) {
       onLangChange(newLang); // Alerts page.js so the timeline at the bottom translates too!
     }

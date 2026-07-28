@@ -6,3 +6,5 @@ __pycache__/
 # Node Packaged Modules
 node_modules/
 .next/
+
+repomix-output.md
