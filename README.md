@@ -131,7 +131,7 @@ Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:30
 
 ## Contact / Kontakt
 
-**Nadra Mohamed Sah** 📍 Frankfurt am Main, Germany
+**Nadra Qamaria** 📍 Frankfurt am Main, Germany
 
 📧 [qamaria.mdsah@gmail.com](https://www.google.com/search?q=mailto%3Aqamaria.mdsah%40gmail.com)
 

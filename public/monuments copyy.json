@@ -1,0 +1,23 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.64530578,
+          49.64136876
+        ]
+      },
+      "properties": {
+        "name": "Landkreis_Heppenheim_Heppenheim_Kirchengasse 1",
+        "start": 1200,
+        "end": 9999,
+        "style": "Baudenkmal",
+        "description": "Die südöstliche Ecke des Großen Marktes dominierendes Fachwerkhaus, dreigeschossig mit verputztem Erdgeschoss und Krüppelwalmdach, das Fachwerk wohl aus der ersten Hälfte des 18. Jhs. mit Wilder-Mann-Konfiguration, eingetieften, gerahmten Rauten, Feu...",
+        "url": "http://denkxweb.denkmalpflege-hessen.de/30121/"
+      }
+    }
+  ]
+}

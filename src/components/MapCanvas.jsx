@@ -315,7 +315,7 @@ export default function MapCanvas({
                     {/* Dynamic Profile Picture from GitHub */}
                     <img
                       src="https://github.com/petpeevephobia.png"
-                      alt="Nadra Mohamed Sah"
+                      alt="Nadra Qamaria"
                       className="w-8 h-8 rounded-full border border-slate-700/80 object-cover shadow-sm bg-slate-900"
                       onError={(e) => {
                         e.target.src =
@@ -325,7 +325,7 @@ export default function MapCanvas({
                   </div>
                   <div className="flex flex-col">
                     <span className="font-semibold text-xs text-slate-200">
-                      Nadra Mohamed Sah
+                      Nadra Qamaria
                     </span>
                     <span className="text-[10px] text-slate-500 font-medium leading-none">
                       {t.authorDesc}
@@ -683,8 +683,8 @@ export default function MapCanvas({
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
         />
 
         {/* Viewport Reset Controller */}
